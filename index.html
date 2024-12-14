@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blague à mon ami</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #ff6347;
+        }
+
+        .message {
+            font-size: 1.5em;
+            color: #32cd32;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Bienvenue sur le site !</h1>
+    <p class="message">Attendez un instant...</p>
+
+    <script>
+        // Fonction qui démarre la blague
+        function startPrank() {
+            // Faire clignoter l'écran
+            let count = 0;
+            let body = document.body;
+            let interval = setInterval(function() {
+                body.style.backgroundColor = (count % 2 === 0) ? '#ffffff' : '#ff6347';
+                count++;
+                if (count >= 20) { // Arrêter après 10 secondes
+                    clearInterval(interval);
+                    body.style.backgroundColor = '#ffffff'; // Remettre à la normale
+                }
+            }, 500); // Change de couleur toutes les 0,5 secondes
+
+            // Jouer un son fort
+            let beep = new Audio('https://www.soundjay.com/button/beep-07.wav');
+            beep.volume = 1.0;  // Volume du son à son maximum
+            beep.play();
+
+            // Arrêter le son après 10 secondes
+            setTimeout(function() {
+                beep.pause();
+            }, 10000); // Arrêter le son après 10 secondes
+        }
+
+        // Appeler la fonction dès que la page se charge
+        window.onload = function() {
+            startPrank();
+        };
+    </script>
+
+</body>
+</html>
